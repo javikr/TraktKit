@@ -9,7 +9,7 @@
 import Foundation
 
 public struct RemoveListItemResult: Codable {
-    let deleted: Added
+    public let deleted: Added
 //    let notFound: NotFound
 
     public struct Added: Codable {

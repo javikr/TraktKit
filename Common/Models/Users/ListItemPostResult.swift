@@ -9,8 +9,8 @@
 import Foundation
 
 public struct ListItemPostResult: Codable {
-    let added: Added
-    let existing: Added
+    public let added: Added
+    public let existing: Added
 //    let notFound: NotFound
 
     public struct Added: Codable {
