@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		595055962389F75800588153 /* UserImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595055952389F75800588153 /* UserImages.swift */; };
+		595055982389F78F00588153 /* UserImageAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595055972389F78F00588153 /* UserImageAvatar.swift */; };
 		70005646206BBD30005319DD /* test_get_users_watching_now.json in Resources */ = {isa = PBXBuildFile; fileRef = 70005645206BBD30005319DD /* test_get_users_watching_now.json */; };
 		70005648206BBF47005319DD /* TraktEpisodeTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70005647206BBF47005319DD /* TraktEpisodeTranslation.swift */; };
 		70005649206BBF47005319DD /* TraktEpisodeTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70005647206BBF47005319DD /* TraktEpisodeTranslation.swift */; };
@@ -470,6 +472,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		595055952389F75800588153 /* UserImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImages.swift; sourceTree = "<group>"; };
+		595055972389F78F00588153 /* UserImageAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageAvatar.swift; sourceTree = "<group>"; };
 		70005645206BBD30005319DD /* test_get_users_watching_now.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_get_users_watching_now.json; sourceTree = "<group>"; };
 		70005647206BBF47005319DD /* TraktEpisodeTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraktEpisodeTranslation.swift; sourceTree = "<group>"; };
 		7000564B206BC209005319DD /* test_get_all_episode_translations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_get_all_episode_translations.json; sourceTree = "<group>"; };
@@ -873,6 +877,8 @@
 				A7AF98951CBF50DE00744566 /* TraktList.swift */,
 				A77602BA1D1B9DCD000FA8C4 /* TraktListItem.swift */,
 				70C5D8A22065183E002E4356 /* TraktWatchedItem.swift */,
+				595055952389F75800588153 /* UserImages.swift */,
+				595055972389F78F00588153 /* UserImageAvatar.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -1934,6 +1940,7 @@
 				70B8442A1EF0DC4D001BA900 /* TraktShowTranslation.swift in Sources */,
 				703D2ED61EF141E200CAD268 /* TraktListItem.swift in Sources */,
 				703D2ED41EF13FF000CAD268 /* TraktList.swift in Sources */,
+				595055962389F75800588153 /* UserImages.swift in Sources */,
 				703D2EDD1EF1483300CAD268 /* TraktWatching.swift in Sources */,
 				70F7E6271EF224490026B8A1 /* Comments.swift in Sources */,
 				70F7735C1F3DC0E10078110E /* RemoveListItemResult.swift in Sources */,
@@ -1987,6 +1994,7 @@
 				70F7732C1F3C76C60078110E /* Update.swift in Sources */,
 				70C39F3C1EF3869100C3F6A4 /* UsersComments.swift in Sources */,
 				706B9EEA20557BA2002B59FC /* URLSessionProtocol.swift in Sources */,
+				595055982389F78F00588153 /* UserImageAvatar.swift in Sources */,
 				703D2EE41EF14B2900CAD268 /* TraktManager.swift in Sources */,
 				70393F421F3F411200943D34 /* Shows.swift in Sources */,
 				700FED1E1F3FB89A00169961 /* Movies.swift in Sources */,

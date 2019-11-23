@@ -209,10 +209,11 @@ public class TraktManager {
         return request
     }
     
-    internal func createJsonData(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], ids: [NSNumber]? = nil) throws -> Data? {
+    internal func createJsonData(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], ids: [NSNumber]? = nil) throws -> Data? {
         var json: [String: Any] = [
             "movies": movies,
             "shows": shows,
+            "seasons": seasons,
             "episodes": episodes,
             ]
         

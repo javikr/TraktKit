@@ -111,12 +111,12 @@ extension TraktManager {
      🔒 OAuth: Required
      */
     @discardableResult
-    public func addToCollection(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<AddToCollectionResult>) throws -> URLSessionDataTaskProtocol? {
+    public func addToCollection(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<AddToCollectionResult>) throws -> URLSessionDataTaskProtocol? {
         guard var request = mutableRequest(forPath: "sync/collection",
                                            withQuery: [:],
                                            isAuthorized: true,
                                            withHTTPMethod: .POST) else { return nil }
-        request.httpBody = try createJsonData(movies: movies, shows: shows, episodes: episodes)
+        request.httpBody = try createJsonData(movies: movies, shows: shows, seasons: seasons, episodes: episodes)
         return performRequest(request: request,
                               completion: completion)
     }
@@ -129,13 +129,13 @@ extension TraktManager {
      🔒 OAuth: Required
      */
     @discardableResult
-    public func removeFromCollection(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<RemoveFromCollectionResult>) throws -> URLSessionDataTaskProtocol? {
+    public func removeFromCollection(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<RemoveFromCollectionResult>) throws -> URLSessionDataTaskProtocol? {
         guard var request = mutableRequest(forPath: "sync/collection/remove",
                                            withQuery: [:],
                                            isAuthorized: true,
                                            withHTTPMethod: .POST) else { return nil }
         request.httpBody = try createJsonData(movies: movies,
-                                              shows: shows,
+                                              shows: shows, seasons: seasons,
                                               episodes: episodes)
         return performRequest(request: request,
                               completion: completion)
@@ -260,7 +260,7 @@ extension TraktManager {
      - parameter completion: completion handler
      */
     @discardableResult
-    public func addToHistory(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping SuccessCompletionHandler) throws -> URLSessionDataTaskProtocol? {
+    public func addToHistory(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping SuccessCompletionHandler) throws -> URLSessionDataTaskProtocol? {
         
         // Request
         guard var request = mutableRequest(forPath: "sync/history",
@@ -269,6 +269,7 @@ extension TraktManager {
                                            withHTTPMethod: .POST) else { return nil }
         request.httpBody = try createJsonData(movies: movies,
                                               shows: shows,
+                                              seasons: seasons,
                                               episodes: episodes)
         return performRequest(request: request,
                               completion: completion)
@@ -290,7 +291,7 @@ extension TraktManager {
      - parameter completion: completion handler
      */
     @discardableResult
-    public func removeFromHistory(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], historyIDs: [NSNumber]? = nil, completion: @escaping SuccessCompletionHandler) throws -> URLSessionDataTaskProtocol? {
+    public func removeFromHistory(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], historyIDs: [NSNumber]? = nil, completion: @escaping SuccessCompletionHandler) throws -> URLSessionDataTaskProtocol? {
         
         // Request
         guard var request = mutableRequest(forPath: "sync/history/remove",
@@ -300,6 +301,7 @@ extension TraktManager {
         
         request.httpBody = try createJsonData(movies: movies,
                                               shows: shows,
+                                              seasons: seasons,
                                               episodes: episodes,
                                               ids: historyIDs)
         
@@ -401,14 +403,14 @@ extension TraktManager {
      - parameter episodes: array of episode object JSON strings
      */
     @discardableResult
-    public func removeRatings(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<RemoveRatingsResult>) throws -> URLSessionDataTaskProtocol? {
+    public func removeRatings(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<RemoveRatingsResult>) throws -> URLSessionDataTaskProtocol? {
         guard
             var request = mutableRequest(forPath: "sync/ratings/remove",
                                          withQuery: [:],
                                          isAuthorized: true,
                                          withHTTPMethod: .POST) else { return nil }
         request.httpBody = try createJsonData(movies: movies,
-                                              shows: shows,
+                                              shows: shows, seasons: seasons,
                                               episodes: episodes)
         return performRequest(request: request,
                               completion: completion)
@@ -456,13 +458,13 @@ extension TraktManager {
      🔒 OAuth: Required
      */
     @discardableResult
-    public func addToWatchlist(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping SuccessCompletionHandler) throws -> URLSessionDataTaskProtocol? {
+    public func addToWatchlist(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping SuccessCompletionHandler) throws -> URLSessionDataTaskProtocol? {
         guard var request = mutableRequest(forPath: "sync/watchlist",
                                          withQuery: [:],
                                          isAuthorized: true,
                                          withHTTPMethod: .POST) else { completion(.fail); return nil }
         request.httpBody = try createJsonData(movies: movies,
-                                              shows: shows,
+                                              shows: shows, seasons: seasons,
                                               episodes: episodes)
         return performRequest(request: request,
                               completion: completion)
@@ -476,13 +478,13 @@ extension TraktManager {
      🔒 OAuth: Required
      */
     @discardableResult
-    public func removeFromWatchlist(movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<RemoveFromWatchlistResult>) throws -> URLSessionDataTaskProtocol? {
+    public func removeFromWatchlist(movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping ObjectCompletionHandler<RemoveFromWatchlistResult>) throws -> URLSessionDataTaskProtocol? {
         guard var request = mutableRequest(forPath: "sync/watchlist/remove",
                                          withQuery: [:],
                                          isAuthorized: true,
                                          withHTTPMethod: .POST) else { completion(.error(error: nil)); return nil }
         request.httpBody = try createJsonData(movies: movies,
-                                              shows: shows,
+                                              shows: shows, seasons: seasons,
                                               episodes: episodes)
         return performRequest(request: request,
                               completion: completion)

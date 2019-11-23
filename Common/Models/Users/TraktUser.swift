@@ -23,6 +23,7 @@ public struct User: Codable {
     public let about: String?
     public let gender: String?
     public let age: Int?
+    public let images: UserImages?
     
     // VIP
     public let vipOG: Bool?
@@ -41,5 +42,6 @@ public struct User: Codable {
         case age
         case vipOG = "vip_og"
         case vipYears = "vip_years"
+        case images
     }
 }

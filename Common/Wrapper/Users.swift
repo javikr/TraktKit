@@ -437,13 +437,13 @@ extension TraktManager {
      🔒 OAuth Required
      */
     @discardableResult
-    public func addItemToCustomList<T: CustomStringConvertible>(username: String = "me", listID: T, movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping AddListItemCompletion) throws -> URLSessionDataTaskProtocol? {
+    public func addItemToCustomList<T: CustomStringConvertible>(username: String = "me", listID: T, movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping AddListItemCompletion) throws -> URLSessionDataTaskProtocol? {
         guard var request = mutableRequest(forPath: "users/\(username)/lists/\(listID)/items",
                                          withQuery: [:],
                                          isAuthorized: true,
                                          withHTTPMethod: .POST) else { return nil }
         request.httpBody = try createJsonData(movies: movies,
-                                              shows: shows,
+                                              shows: shows, seasons: seasons,
                                               episodes: episodes)
         return performRequest(request: request,
                               completion: completion)
@@ -457,13 +457,13 @@ extension TraktManager {
     🔒 OAuth Required
     */
     @discardableResult
-    public func removeItemFromCustomList<T: CustomStringConvertible>(username: String = "me", listID: T, movies: [RawJSON], shows: [RawJSON], episodes: [RawJSON], completion: @escaping RemoveListItemCompletion) throws -> URLSessionDataTaskProtocol? {
+    public func removeItemFromCustomList<T: CustomStringConvertible>(username: String = "me", listID: T, movies: [RawJSON], shows: [RawJSON], seasons: [RawJSON], episodes: [RawJSON], completion: @escaping RemoveListItemCompletion) throws -> URLSessionDataTaskProtocol? {
         guard var request = mutableRequest(forPath: "users/\(username)/lists/\(listID)/items/remove",
                                          withQuery: [:],
                                          isAuthorized: true,
                                          withHTTPMethod: .POST) else { return nil }
         request.httpBody = try createJsonData(movies: movies,
-                                              shows: shows,
+                                              shows: shows, seasons: seasons,
                                               episodes: episodes)
         return performRequest(request: request,
                               completion: completion)
