@@ -17,12 +17,12 @@ public struct Airs: Codable {
 public struct TraktShow: Codable {
     
     // Extended: Min
-    public let title: String
+    public var title: String
     public let year: Int?
     public let ids: ID
     
     // Extended: Full
-    public let overview: String?
+    public var overview: String?
     public let firstAired: Date?
     public let airs: Airs?
     public let runtime: Int?

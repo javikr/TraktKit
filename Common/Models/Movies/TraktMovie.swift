@@ -10,13 +10,13 @@ import Foundation
 
 public struct TraktMovie: Codable {
     // Extended: Min
-    public let title: String
+    public var title: String
     public let year: Int?
     public let ids: ID
     
     // Extended: Full
     public let tagline: String?
-    public let overview: String?
+    public var overview: String?
     public let released: Date?
     public let runtime: Int?
     public let trailer: URL?
