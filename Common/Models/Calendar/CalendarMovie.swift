@@ -10,5 +10,5 @@ import Foundation
 
 public struct CalendarMovie: Codable {
     public let released: Date
-    public let movie: TraktMovie
+    public var movie: TraktMovie
 }

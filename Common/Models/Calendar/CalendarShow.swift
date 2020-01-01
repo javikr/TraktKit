@@ -11,7 +11,7 @@ import Foundation
 public struct CalendarShow: Codable {
     public let firstAired: Date
     public let episode: TraktEpisode
-    public let show: TraktShow
+    public var show: TraktShow
     
     enum CodingKeys: String, CodingKey {
         case firstAired = "first_aired"
