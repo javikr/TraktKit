@@ -177,7 +177,7 @@ public class TraktManager {
         return request
     }
     
-    internal func mutableRequest(forPath path: String, withQuery query: [String: String], isAuthorized authorized: Bool, withHTTPMethod httpMethod: Method) -> URLRequest? {
+    internal func mutableRequest(forPath path: String, withQuery query: [String: String], isAuthorized authorized: Bool, itemsPerPage: Int? = nil, withHTTPMethod httpMethod: Method) -> URLRequest? {
         guard let apiBaseURL = APIBaseURL else { preconditionFailure("Call `set(clientID:clientSecret:redirectURI:staging:)` before making any API requests") }
         let urlString = "https://\(apiBaseURL)/" + path
         guard var components = URLComponents(string: urlString) else { return nil }
@@ -196,8 +196,13 @@ public class TraktManager {
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("2", forHTTPHeaderField: "trakt-api-version")
+        
         if let clientID = clientID {
             request.addValue(clientID, forHTTPHeaderField: "trakt-api-key")
+        }
+        
+        if let itemsPerPage = itemsPerPage {
+            request.addValue(String(itemsPerPage), forHTTPHeaderField: "X-Pagination-Limit")
         }
 
         if authorized {

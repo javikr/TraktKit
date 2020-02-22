@@ -16,11 +16,12 @@ extension TraktManager {
      📄 Pagination
      */
     @discardableResult
-    public func getTrendingLists(completion: @escaping ObjectsCompletionHandler<TraktTrendingList>) -> URLSessionDataTaskProtocol? {
+    public func getTrendingLists(itemsPerPage: Int = 10, completion: @escaping ObjectsCompletionHandler<TraktTrendingList>) -> URLSessionDataTaskProtocol? {
         guard
             let request = mutableRequest(forPath: "lists/trending",
                                          withQuery: [:],
                                          isAuthorized: false,
+                                         itemsPerPage: itemsPerPage,
                                          withHTTPMethod: .GET) else {
                                             completion(.error(error: nil))
                                             return nil
@@ -35,11 +36,12 @@ extension TraktManager {
      📄 Pagination
      */
     @discardableResult
-    public func getPopularLists(completion: @escaping ObjectsCompletionHandler<TraktTrendingList>) -> URLSessionDataTaskProtocol? {
+    public func getPopularLists(itemsPerPage: Int = 10, completion: @escaping ObjectsCompletionHandler<TraktTrendingList>) -> URLSessionDataTaskProtocol? {
         guard
             let request = mutableRequest(forPath: "lists/popular",
                                          withQuery: [:],
                                          isAuthorized: false,
+                                         itemsPerPage: itemsPerPage,
                                          withHTTPMethod: .GET) else {
                                             completion(.error(error: nil))
                                             return nil
