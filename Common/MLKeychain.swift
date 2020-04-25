@@ -8,8 +8,6 @@
 
 import Foundation
 
-let serviceIdentifier = "com.litteral.TVShows"
-
 let kSecClassValue = kSecClass as String
 let kSecAttrAccountValue = kSecAttrAccount as String
 let kSecValueDataValue = kSecValueData as String
@@ -18,6 +16,8 @@ let kSecAttrServiceValue = kSecAttrService as String
 let kSecMatchLimitValue = kSecMatchLimit as String
 let kSecReturnDataValue = kSecReturnData as String
 let kSecMatchLimitOneValue = kSecMatchLimitOne as String
+let kSecAttrAccessGroupValue = kSecAttrAccessGroup as String
+let tvsofaKeychainShared = "639M4BK859.com.theclashsoft.tvsofa3.keychain"
 
 public class MLKeychain {
     
@@ -25,6 +25,7 @@ public class MLKeychain {
         let data = value.data(using: String.Encoding.utf8, allowLossyConversion: false)!
         
         let keychainQuery: [String: Any] = [
+            kSecAttrAccessGroupValue: tvsofaKeychainShared,
             kSecClassValue: kSecClassGenericPasswordValue,
             kSecAttrAccountValue: key,
             kSecValueDataValue: data
@@ -38,6 +39,7 @@ public class MLKeychain {
     
     class func loadData(forKey key: String) -> Data? {
         let keychainQuery: [String: Any] = [
+            kSecAttrAccessGroupValue: tvsofaKeychainShared,
             kSecClassValue: kSecClassGenericPasswordValue,
             kSecAttrAccountValue: key,
             kSecReturnDataValue: kCFBooleanTrue,
@@ -62,7 +64,8 @@ public class MLKeychain {
     @discardableResult
     class func deleteItem(forKey key: String) -> Bool {
         let query: [String: Any] = [
-            kSecClass as String       : kSecClassGenericPassword,
+            kSecAttrAccessGroupValue: tvsofaKeychainShared,
+            kSecClass as String : kSecClassGenericPassword,
             kSecAttrAccount as String : key ]
         
         let status: OSStatus = SecItemDelete(query as CFDictionary)
@@ -71,7 +74,10 @@ public class MLKeychain {
     }
     
     public class func clear() -> Bool {
-        let query = [ kSecClass as String : kSecClassGenericPassword ]
+        let query: [String: Any] = [
+            kSecAttrAccessGroupValue: tvsofaKeychainShared,
+            kSecClass as String : kSecClassGenericPassword
+        ]
         
         let status: OSStatus = SecItemDelete(query as CFDictionary)
         
